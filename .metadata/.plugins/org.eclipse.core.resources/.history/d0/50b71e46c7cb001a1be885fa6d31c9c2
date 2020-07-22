@@ -1,0 +1,84 @@
+package datnd;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.Executor;
+
+import org.apache.log4j.Logger;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import datnd.connectJDBC;
+
+public class titleCrawl implements Runnable {
+	Logger logger;
+	private Connection con;
+	private readFile readFile = new readFile();
+	private String appId;
+	private int uploadDate;
+	private int id;
+	private String version;
+	private String fileUrl;
+	private Document doc = null;
+	private String html = null;
+	private String url;
+	private FileWriter fileWriter;
+	
+	public titleCrawl (int id, String appId, int uploadDate, Connection con, Logger logger) {
+		super();
+		this.id = id;
+		this.appId = appId;
+		this.uploadDate = uploadDate;
+		this.con = con;
+		this.logger = logger;
+		this.fileUrl = "/home/TOVI_App/CrawlNewVersion/html/" + this.id + ".html";
+		this.url = "https://play.google.com/store/apps/details?id="+ this.appId + "&hl=us";
+	}
+	
+	public void run() {
+			try {
+			doc = Jsoup.connect(url).get();
+			}catch(Exception e) {
+				System.out.print("Loi jsoup: ---->");
+				e.printStackTrace();
+			}
+			html = doc.html();
+			try {
+				fileWriter = new FileWriter(fileUrl);
+				fileWriter.write(html);
+				fileWriter.close();
+			} catch(Exception e){
+				System.out.print("Loi FileWriter: ---->");
+				e.printStackTrace();
+			}
+			readFile.readFile1(fileUrl);
+			if(uploadDate < readFile.getDate()) {
+				version = readFile.getVersion();
+				System.out.println("co ban moi: " + version);
+				Date d = new Date((long)readFile.getDate()*1000);
+				DateFormat f = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss.mmm' '");
+		        System.out.println("Ngay cap nhat: " + f.format(d) + "\n");
+			}
+			try {
+				String sqlInsert = "Insert into newversion (appid, upload_date, version, upload_date_new, status, created_at)"
+						+ "value(?, ?, ?, ?, ?, ?)";
+				PreparedStatement st = con.prepareStatement(sqlInsert);
+				st.setString(1, url);
+				st.setDate(2, new Date((long)uploadDate*1000));
+				st.setString(3, version);
+				st.setDate(4, new Date((long)readFile.getDate()*1000));
+				st.setInt(5, 1);
+				st.setDate(6, new java.sql.Date(System.currentTimeMillis()));
+				st.executeUpdate();
+				st.close();
+			} catch(Exception e) {
+				System.out.println("Loi database: ---->");
+				e.printStackTrace();
+			}
+	}
+}
