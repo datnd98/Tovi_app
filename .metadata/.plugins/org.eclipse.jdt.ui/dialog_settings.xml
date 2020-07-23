@@ -25,7 +25,7 @@
 		<item key="height" value="400"/>
 	</section>
 	<section name="org.eclipse.ltk.ui.refactoring.settings">
-		<item key="updateSimilarElements" value="false"/>
+		<item key="updateSimilarElements" value="true"/>
 		<item key="updateSimilarElementsMatchStrategy" value="1"/>
 		<item key="updateTextualMatches" value="true"/>
 		<item key="updateQualifiedNames" value="false"/>
@@ -60,6 +60,7 @@
 		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="E:\TOVI\crawlNewVersion.jar"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
 			<item value="E:\TOVI\crawlNewVersion.jar"/>
+			<item value="E:\TOVI\compareNewVersion.jar"/>
 		</list>
 		<list key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION_HISTORY">
 			<item value="E:\TOVI\WorkSpace.xml"/>

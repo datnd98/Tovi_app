@@ -52,6 +52,7 @@
 			<item value="titleCrawl"/>
 		</list>
 		<list key="artifactId">
+			<item value="compareVersion"/>
 			<item value="CrawlNewVersion"/>
 			<item value="datnd"/>
 		</list>

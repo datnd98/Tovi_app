@@ -14,12 +14,13 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
 public class readFile {
+	private File htmlFile;
 	private int date1;
 	private String version;
 //	private final Logger logger = LogManager.getLogger(readFile.class);
 
-	public void readFile1(String url, FileWriter fw) {
-		File htmlFile = new File(url);
+	public void readFile1(File file, FileWriter fw) {
+		this.htmlFile = file;
 		try {
 			Document doc = Jsoup.parse(htmlFile, "utf-8");
 			String html = doc.toString();
@@ -41,23 +42,25 @@ public class readFile {
 							.getAsString();
 					date1 = Integer.parseInt(date);
 				}
-			}
-			if (matcher2.find()) {
-				if (matcher2.groupCount() >= 1) {
-					String res2 = matcher2.group(1);
-					String test2 = res2.substring(res2.indexOf("data:"));
-					test2 = test2.substring(5);
-					JsonParser parser2 = new JsonParser();
-					JsonElement tradeElement2 = parser2.parse(test2);
-					JsonArray trade2 = tradeElement2.getAsJsonArray();
-					version = trade2.get(1).getAsString();
-					if (version.contains("device") == true) {
-						version = "";
+				if (matcher2.find()) {
+					if (matcher2.groupCount() >= 1) {
+						String res2 = matcher2.group(1);
+						String test2 = res2.substring(res2.indexOf("data:"));
+						test2 = test2.substring(5);
+						JsonParser parser2 = new JsonParser();
+						JsonElement tradeElement2 = parser2.parse(test2);
+						JsonArray trade2 = tradeElement2.getAsJsonArray();
+						version = trade2.get(1).getAsString();
+						if (version.contains("device") == true) {
+							version = "";
+						}
 					}
 				}
 			}
+			htmlFile.delete();
 		} catch (Exception e) {
 			try {
+				htmlFile.delete();
 				fw.write("Loi doc file ---> " + e.getMessage() + "\n");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -65,7 +68,7 @@ public class readFile {
 			}
 //			logger.error(e);
 		}
-		htmlFile.delete();
+//		htmlFile.delete();
 	}
 
 	public int getDate() {
