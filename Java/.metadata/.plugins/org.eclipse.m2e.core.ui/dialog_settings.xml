@@ -46,6 +46,7 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="Tovi_datnd"/>
 			<item value="Tovi"/>
 			<item value="tovi.datnd"/>
 		</list>
@@ -53,6 +54,7 @@
 			<item value="titleCrawl"/>
 		</list>
 		<list key="artifactId">
+			<item value="compareVersion_Distributed"/>
 			<item value="versionCodeCrawl"/>
 			<item value="compareVersion"/>
 			<item value="CrawlNewVersion"/>
