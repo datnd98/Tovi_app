@@ -47,7 +47,7 @@ function crawlEnemy($conn)
         $appid = $tmpUrl1[4];
         $appStr = $tmpUrl1[3];
         echo $appid . PHP_EOL;
-
+die;
             // crawl apktrending
         print_r($urlTrending);
         echo PHP_EOL;
