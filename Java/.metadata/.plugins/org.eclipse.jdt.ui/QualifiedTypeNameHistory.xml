@@ -46,4 +46,11 @@
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="org.apache.commons.lang3.time.StopWatch"/>
+    <fullyQualifiedTypeName name="org.eclipse.paho.client.mqttv3.MqttClient"/>
+    <fullyQualifiedTypeName name="org.eclipse.paho.client.mqttv3.MqttMessage"/>
+    <fullyQualifiedTypeName name="org.eclipse.paho.client.mqttv3.MqttException"/>
+    <fullyQualifiedTypeName name="org.eclipse.paho.client.mqttv3.MqttConnectOptions"/>
+    <fullyQualifiedTypeName name="org.eclipse.paho.client.mqttv3.MqttCallback"/>
+    <fullyQualifiedTypeName name="compareVersion_Distributed.MessageProcess"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>

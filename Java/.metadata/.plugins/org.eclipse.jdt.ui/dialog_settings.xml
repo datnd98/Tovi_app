@@ -57,9 +57,10 @@
 		<item key="FatJarPackageWizardPage.ANTSCRIPT_SAVE" value="false"/>
 		<item key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION" value="E:\TOVI\WorkSpace"/>
 		<item key="FatJarPackageWizardPage.LIBRARY_HANDLING" value="1"/>
-		<item key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME" value="AppCrawl - datnd"/>
-		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="E:\TOVI\crawlNewVersion.jar"/>
+		<item key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME" value="Publisher - compareVersion_Distributed"/>
+		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="E:\TOVI\compareVersion_Distributed.jar"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="E:\TOVI\compareVersion_Distributed.jar"/>
 			<item value="E:\TOVI\crawlNewVersion.jar"/>
 			<item value="E:\TOVI\versionCodeCrawl.jar"/>
 			<item value="E:\TOVI\crawlNewVersion1.jar"/>
